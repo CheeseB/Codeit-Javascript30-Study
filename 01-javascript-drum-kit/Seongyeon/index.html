@@ -64,9 +64,12 @@
     const handleKeyDown = (e) => {
       const keyCode = e.keyCode;
       const drum = document.querySelector(`.key[data-key="${keyCode}"]`);
-      if (!drum) return;
+      const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+      if (!drum || !audio) return;
 
       drum.classList.add('playing');
+      audio.currentTime = 0;
+      audio.play();
     }
 
     const handleKeyUp = (e) => {
