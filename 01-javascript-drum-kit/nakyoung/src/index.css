@@ -1,0 +1,19 @@
+*{
+  box-sizing: border-box;
+}
+
+html{
+  height: 100%;
+
+  background-image: url(./asset/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body{
+  height: 100%;
+
+  display:flex;
+  flex-direction: column;
+  justify-content: center ;
+}

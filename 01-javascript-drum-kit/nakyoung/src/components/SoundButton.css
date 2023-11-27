@@ -1,0 +1,35 @@
+.sound-button {
+  width: 100px;
+  height: 80px;
+
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  background-color: rgba(25, 25, 25, 0.8);
+  border: 5px solid black;
+  border-radius: 5%;
+}
+
+.sound-button_pressed {
+  background-color: #d3d3d3;
+}
+
+.sound-button__key-info {
+  margin: 0;
+
+  color: white;
+
+  font-size: 30px;
+}
+
+.sound-button__sound-info {
+  margin: 0;
+
+  color: yellow;
+
+  font-size: 10px;
+}
