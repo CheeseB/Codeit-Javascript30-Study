@@ -2,4 +2,4 @@
 
 *.log
 haters/
-.idea/
+.idea/.DS_Store
