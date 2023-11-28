@@ -20,7 +20,7 @@ document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix
 (document.documentElement.style.setProperty를 사용하여 CSS의 사용자 정의 속성을 업데이트)<br/>
 
 가져온 인풋들에 배열 반복문으로 addEventListener("change", handleUpdate)를 등록해준다<br/>
-=> 각 인풋들의 value값을 변화시킬 때 마다 해당값이 handleUpdate 실행<br/>
+=> 각 인풋들에 "change"이벤트가 발생될 때 마다  handleUpdate 실행<br/>
 
 이때 해당값들은 단위가 없으므로 각 태그에 data속성(ata-sizing="px")을 추가한다<br/>
 <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px" /><br/>
