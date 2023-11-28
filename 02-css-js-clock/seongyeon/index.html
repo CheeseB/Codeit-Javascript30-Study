@@ -63,6 +63,7 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform: rotate(90deg);
       transform-origin: right;
       transition: all 0.05s;
       transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
@@ -83,40 +84,31 @@
 
   <script>
     const INITIAL_DEGREE = 90;
-    const DEGREE_PER_SECOND = 6;
-    const DEGREE_PER_MINUTE = 6;
-    const DEGREE_PER_HOUR = 30;
-    const MINUTE_DEGREE_PER_SECOND = 0.1;
-    const HOUR_DEGREE_PER_SECOND = 0.01;
+    const CIRCLE_DEGREE = 360;
+    const FULL_SECOND = 60;
+    const FULL_MINUTE = 60;
+    const FULL_HOUR = 12;
 
     const secondHand = document.querySelector('.second-hand');
     const minHand = document.querySelector('.min-hand');
     const hourHand = document.querySelector('.hour-hand');
 
-    const now = new Date();
-    const second = now.getSeconds();
-    const minute = now.getMinutes();
-    const hour = now.getHours();
+    const setTime = () => {
+      const now = new Date();
+      const second = now.getSeconds();
+      const minute = now.getMinutes();
+      const hour = now.getHours();
 
-    let secondDegree = second * DEGREE_PER_SECOND + INITIAL_DEGREE;
-    let minuteDegree = minute * DEGREE_PER_MINUTE + INITIAL_DEGREE;
-    let hourDegree = hour * DEGREE_PER_HOUR + INITIAL_DEGREE;
+      const secondDegree = ((second / FULL_SECOND) * CIRCLE_DEGREE) + INITIAL_DEGREE;
+      const minuteDegree = ((minute / FULL_MINUTE) * CIRCLE_DEGREE) + INITIAL_DEGREE;
+      const hourDegree = ((hour / FULL_HOUR) * CIRCLE_DEGREE) + INITIAL_DEGREE;
 
-    const renderTimeHand = (secondDegree, minuteDegree, hourDegree) => {
       secondHand.style.transform = `rotate(${secondDegree}deg)`;
       minHand.style.transform = `rotate(${minuteDegree}deg)`;
       hourHand.style.transform = `rotate(${hourDegree}deg)`;
     }
 
-    renderTimeHand(secondDegree, minuteDegree, hourDegree);
-
-    setInterval(() => {
-      secondDegree += DEGREE_PER_SECOND;
-      minuteDegree += MINUTE_DEGREE_PER_SECOND;
-      hourDegree += HOUR_DEGREE_PER_SECOND;
-
-      renderTimeHand(secondDegree, minuteDegree, hourDegree);
-    }, 1000);
+    setInterval(setTime, 1000);
   </script>
 </body>
 
