@@ -1,8 +1,8 @@
 ## querySelectorAll
 
 document.querySelectorAll(".controls input")으로 dom 요소 노드를 가져오면<br/>
-클레스 네임이 controls input인 요소노드를 모두가져와 NodeList(유사배열)에<br/>
-인덱스로 담아 반환하고 각 노드의 프로토타입을 볼 수있다<br/>
+클레스 네임이 controls input인 요소노드를 모두 찾아 NodeList(유사배열)에<br/>
+인덱스로 담아 반환하고 개발자도구에서 각 노드의 프로토타입을 볼 수있다<br/>
 
 프로토 타입-해당 객체가 상속받은 메소드나 속성에 대한 정보<br/>
 
