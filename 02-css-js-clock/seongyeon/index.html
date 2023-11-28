@@ -80,6 +80,7 @@
   </style>
 
   <script>
+    const INITIAL_DEGREE = 90;
     const DEGREE_PER_SECOND = 6;
     const DEGREE_PER_MINUTE = 6;
     const DEGREE_PER_HOUR = 30;
@@ -95,9 +96,9 @@
     const minute = now.getMinutes();
     const hour = now.getHours();
 
-    let secondDegree = second * DEGREE_PER_SECOND;
-    let minuteDegree = minute * DEGREE_PER_MINUTE;
-    let hourDegree = hour * DEGREE_PER_HOUR;
+    let secondDegree = second * DEGREE_PER_SECOND + INITIAL_DEGREE;
+    let minuteDegree = minute * DEGREE_PER_MINUTE + INITIAL_DEGREE;
+    let hourDegree = hour * DEGREE_PER_HOUR + INITIAL_DEGREE;
 
     const renderTimeHand = (secondDegree, minuteDegree, hourDegree) => {
       secondHand.style.transform = `rotate(${secondDegree}deg)`;
