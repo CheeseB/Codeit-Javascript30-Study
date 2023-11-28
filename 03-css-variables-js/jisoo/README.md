@@ -9,7 +9,7 @@ document.querySelectorAll(".controls input")으로 dom 요소 노드를 가져�
 ## 기능 구현 로직
 
 각 인풋 요소 노드를 가져온다<br/>
-(querySelectorAll을 쓰면 유사배열에 담겨오기떄문에 forEach, map 함수 사용가능)<br/>
+(querySelectorAll을 쓰면 유사배열에 담겨오기 때문에 forEach, map 함수 사용가능)<br/>
 
 function handleUpdate() {<br/>
 const suffix = this.dataset.sizing || "";<br/>
