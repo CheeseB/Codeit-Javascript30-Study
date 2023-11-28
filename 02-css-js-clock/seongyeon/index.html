@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>JS + CSS Clock</title>
   <link rel="icon" href="https://fav.farm/🔥" />
 </head>
+
 <body>
-
-
-    <div class="clock">
-      <div class="clock-face">
-        <div class="hand hour-hand"></div>
-        <div class="hand min-hand"></div>
-        <div class="hand second-hand"></div>
-      </div>
+  <div class="clock">
+    <div class="clock-face">
+      <div class="hand hour-hand"></div>
+      <div class="hand min-hand"></div>
+      <div class="hand second-hand"></div>
     </div>
-
+  </div>
 
   <style>
     html {
@@ -44,17 +43,18 @@
       position: relative;
       padding: 2rem;
       box-shadow:
-        0 0 0 4px rgba(0,0,0,0.1),
+        0 0 0 4px rgba(0, 0, 0, 0.1),
         inset 0 0 0 3px #EFEFEF,
         inset 0 0 10px black,
-        0 0 10px rgba(0,0,0,0.2);
+        0 0 10px rgba(0, 0, 0, 0.2);
     }
 
     .clock-face {
       position: relative;
       width: 100%;
       height: 100%;
-      transform: translateY(-3px); /* account for the height of the clock hands */
+      transform: translateY(-3px);
+      /* account for the height of the clock hands */
     }
 
     .hand {
@@ -63,13 +63,46 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: right;
     }
-
   </style>
 
   <script>
+    const DEGREE_PER_SECOND = 6;
+    const DEGREE_PER_MINUTE = 6;
+    const DEGREE_PER_HOUR = 30;
+    const MINUTE_DEGREE_PER_SECOND = 0.1;
+    const HOUR_DEGREE_PER_SECOND = 0.01;
 
+    const secondHand = document.querySelector('.second-hand');
+    const minHand = document.querySelector('.min-hand');
+    const hourHand = document.querySelector('.hour-hand');
 
+    const now = new Date();
+    const second = now.getSeconds();
+    const minute = now.getMinutes();
+    const hour = now.getHours();
+
+    let secondDegree = second * DEGREE_PER_SECOND;
+    let minuteDegree = minute * DEGREE_PER_MINUTE;
+    let hourDegree = hour * DEGREE_PER_HOUR;
+
+    const renderTimeHand = (secondDegree, minuteDegree, hourDegree) => {
+      secondHand.style.transform = `rotate(${secondDegree}deg)`;
+      minHand.style.transform = `rotate(${minuteDegree}deg)`;
+      hourHand.style.transform = `rotate(${hourDegree}deg)`;
+    }
+
+    renderTimeHand(secondDegree, minuteDegree, hourDegree);
+
+    setInterval(() => {
+      secondDegree += DEGREE_PER_SECOND;
+      minuteDegree += MINUTE_DEGREE_PER_SECOND;
+      hourDegree += HOUR_DEGREE_PER_SECOND;
+
+      renderTimeHand(secondDegree, minuteDegree, hourDegree);
+    }, 1000);
   </script>
 </body>
+
 </html>
