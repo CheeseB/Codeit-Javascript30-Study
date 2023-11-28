@@ -1,0 +1,2 @@
+setInterval() 메서드는 각 호출 사이에 고정된 시간 지연으로 함수를 반복적으로 호출한다.
+transform-origin : transform의 기준점을 설정할 수 있는 속성이다.
