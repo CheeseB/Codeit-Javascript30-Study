@@ -21,7 +21,25 @@ const links = category.querySelectorAll("a");<br/>
 
 const de = links.map((link) => link.textContent);<br/>
 
-links는 유사배열이므로 map메소드를 쓸 수 없기때문에
+links는 유사배열이므로 map메소드를 쓸 수 없기때문에<br/>
 
-1. 스프레드 배열
-2. Array.from()
+1. 스프레드 배열<br/>
+2. Array.from()<br/>
+
+## reduce의 초기값을 빈객체로?
+```
+const data = ["car", "car", "truck", "truck", "bike", "walk", "car", "van", "bike", "walk", "car", "van", "car", "truck"];
+
+const transportation = data.reduce((obj, item) => {<br/>
+    if (!obj[item]) {<br/>
+      obj[item] = 0;<br/>
+    }<br/>
+      obj[item]++;<br/>
+        return obj;<br/>
+    }, {});<br/>
+```
+
+reduce메소드의 두번째 인자인 초기값이 빈객체 일 때<br/>
+프로퍼티가 없을 경우, reduce 콜백함수의 두번째 인자로 들어간<br/>
+각data 배열 인덱스를 키값으로, 0을 벨류값으로 할당한 프로퍼티를 <br/>
+생성한 뒤 해당 객체를 리턴해 줘야 한다<br/>
