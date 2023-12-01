@@ -27,16 +27,26 @@ links는 유사배열이므로 map메소드를 쓸 수 없기때문에<br/>
 2. Array.from()<br/>
 
 ## reduce의 초기값을 빈객체로?
-
+```
 const data = ["car", "car", "truck", "truck", "bike", "walk", "car", "van", "bike", "walk", "car", "van", "car", "truck"];
 
 const transportation = data.reduce((obj, item) => {<br/>
+<<<<<<< HEAD
 if (!obj[item]) {<br/>
 obj[item] = 0;<br/>
 }<br/>
 obj[item]++;<br/>
 return obj;<br/>
 }, {});<br/>
+=======
+    if (!obj[item]) {<br/>
+      obj[item] = 0;<br/>
+    }<br/>
+      obj[item]++;<br/>
+        return obj;<br/>
+    }, {});<br/>
+```
+>>>>>>> f92b5f05322a01787778849b152a46289c78c6c0
 
 reduce메소드의 두번째 인자인 초기값이 빈객체 일 때<br/>
 프로퍼티가 없을 경우, reduce 콜백함수의 두번째 인자로 들어간<br/>
