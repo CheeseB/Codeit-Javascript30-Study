@@ -26,11 +26,11 @@ flex-container 요소의 크기보다 클 때 flex-shrink 속성을 사용<br/>
       panels.forEach((panel) => panel.addEventListener("transitionend", toggleActive));
 ```
 
-# transitionend 이벤트
+### transitionend 이벤트
 
 CSS의 transition이 완료된 후에 발생하는 이벤트
 
-# propertyName을 사용한 토글 조건문
+### propertyName을 사용한 토글 조건문
 
 transitionend 가 일어난 event 에 flex 이벤트가 포함되어 있다면 <br/>
 (=transitionend가 일어난 객체의 속성 이름에 'flex'가 포함되어 있다면)
