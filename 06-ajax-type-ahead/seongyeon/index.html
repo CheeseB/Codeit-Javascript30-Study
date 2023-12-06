@@ -21,7 +21,7 @@
     const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
     const input = document.querySelector('.search');
-    let cities;
+    const cities = [];
 
     (async () => {
       let result;
@@ -32,12 +32,14 @@
         return;
       }
 
-      cities = await result.json();
+      const jsonArray = await result.json();
+      cities.push(...jsonArray);
     })();
 
     input.addEventListener('input', (e) => {
       const suggestions = document.querySelector('.suggestions');
       const value = e.target.value.toLowerCase();
+      const regex = new RegExp(value, 'gi');
 
       if (!value) {
         suggestions.innerHTML = `
@@ -48,19 +50,18 @@
       };
 
       const listElements = cities.filter(({ city, state }) =>
-        city.toLowerCase().includes(value) || state.toLowerCase().includes(value)
+        city.match(regex) || state.match(regex)
       ).map(({ city, state, population }) => {
         const cityAndState = `${city}, ${state}`;
         const populationWithComma = Number(population).toLocaleString();
-        const regex = new RegExp(value, 'gi');
-        const highlightedCity = cityAndState.replaceAll(regex, (target) =>
+        const highlightedCity = cityAndState.replace(regex, (target) =>
           `<span class="hl">${target}</span>`
         );
 
         return `
           <li>
-            <span>${highlightedCity}</span>
-            <span>${populationWithComma}</span>
+            <span class="name">${highlightedCity}</span>
+            <span class="population">${populationWithComma}</span>
           </li>
         `;
       }).join('');
