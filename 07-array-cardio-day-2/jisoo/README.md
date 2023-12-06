@@ -1,4 +1,4 @@
-## 배열 메소드
+## 배열의 반복 메소드
 
 https://ko.javascript.info/array-methods
 
