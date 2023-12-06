@@ -21,7 +21,7 @@
     const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
     const input = document.querySelector('.search');
-    let cityData;
+    let cities;
 
     (async () => {
       let result;
@@ -32,13 +32,40 @@
         return;
       }
 
-      cityData = await result.json();
-      console.log(cityData)
+      cities = await result.json();
     })();
 
     input.addEventListener('input', (e) => {
-      const value = e.target.value;
+      const suggestions = document.querySelector('.suggestions');
+      const value = e.target.value.toLowerCase();
 
+      if (!value) {
+        suggestions.innerHTML = `
+          <li>Filter for a city</li>
+          <li>or a state</li>
+        `;
+        return;
+      };
+
+      const listElements = cities.filter(({ city, state }) =>
+        city.toLowerCase().includes(value) || state.toLowerCase().includes(value)
+      ).map(({ city, state, population }) => {
+        const cityAndState = `${city}, ${state}`;
+        const populationWithComma = Number(population).toLocaleString();
+        const regex = new RegExp(value, 'gi');
+        const highlightedCity = cityAndState.replaceAll(regex, (target) =>
+          `<span class="hl">${target}</span>`
+        );
+
+        return `
+          <li>
+            <span>${highlightedCity}</span>
+            <span>${populationWithComma}</span>
+          </li>
+        `;
+      }).join('');
+
+      suggestions.innerHTML = listElements;
     });
 
   </script>
