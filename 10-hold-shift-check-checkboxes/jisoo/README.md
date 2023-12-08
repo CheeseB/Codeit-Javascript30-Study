@@ -21,15 +21,12 @@
 ```
 
 ### checkbox === this<br/>
-
 현재 클릭된 체크박스<br/>
 
 ### checkbox === lastChecked<br/>
-
 현재 클릭 이벤트 이전에 마지막으로 체크된 체크박스(lastChecked)인지 확인<br/>
 
 ### lastChecked = this;
-
 마지막 체크를 this로 갱신 <br/>
 
 => 처음 클릭시 checkbox === lastChecked는 사용되지 않지만 <br/>
