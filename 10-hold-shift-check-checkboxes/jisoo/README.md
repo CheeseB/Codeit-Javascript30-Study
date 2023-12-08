@@ -29,6 +29,7 @@
 ### lastChecked = this;
 마지막 체크를 this로 갱신 <br/>
 
+
 => 처음 클릭시 checkbox === lastChecked는 사용되지 않지만 <br/>
 두번째 클릭시 (첫번째 클릭 때) this를 lastChecked로 갱신 했기 때문에 <br/>
 마지막 체크 부분을 식별해 낼 수 있다<br/>
